@@ -18,3 +18,22 @@ file(GLOB_RECURSE SRC src/*.cpp)
 add_executable(${PROJECT_NAME} ${SRC})
 target_include_directories(${PROJECT_NAME} PUBLIC lib src)
 target_link_libraries(${PROJECT_NAME} PUBLIC ${PROJECT_LIB})
+
+# install
+# headers 
+# install(FILES ${CMAKE_BINARY_DIR}/include/xxx DESTINATION include)
+install(TARGETS 
+  ${PROJECT_NAME}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
+
+# uninstall
+if (NOT TARGET uninstall)
+  configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+    IMMEDIATE @ONLY)
+  add_custom_target(uninstall
+    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+endif()
