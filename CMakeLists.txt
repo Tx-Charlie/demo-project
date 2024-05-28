@@ -2,6 +2,17 @@ cmake_minimum_required(VERSION 3.10)
 
 project(demo)
 
+# project setup
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
+
+# clang-tidy during build
+# set(CMAKE_CXX_CLANG_TIDY 
+#   clang-tidy;
+#   -header-filter=.;
+#   -checks=*;
+#   -warnings-as-errors=*;)
+
 if(MSVC OR WIN32)
 	set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 	set(BUILD_SHARED_LIBS TRUE)
