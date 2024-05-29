@@ -3,8 +3,14 @@ cmake_minimum_required(VERSION 3.10)
 project(demo)
 
 # project setup
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
+
+set(CMAKE_CXX_COMPILER clang++)
+set(CMAKE_C_COMPILER clang)
 
 # clang-tidy during build
 # set(CMAKE_CXX_CLANG_TIDY 
